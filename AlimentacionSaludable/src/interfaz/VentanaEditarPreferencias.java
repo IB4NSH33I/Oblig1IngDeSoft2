@@ -211,7 +211,7 @@ public class VentanaEditarPreferencias extends javax.swing.JDialog {
     private void btnEditarPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPreferenciasActionPerformed
         ArrayList<String> preferencias = new ArrayList<>();
         agregarPreferenciasUsuario(preferencias);
-        this.usuarioActual.actualizarPreferenciasUsuario(usuarioActual, preferencias);
+        this.usuarioActual.setPreferencias(preferencias);
         this.panelListo.setVisible(true);
         this.panelEditarPreferencias.setVisible(false);
     }//GEN-LAST:event_btnEditarPreferenciasActionPerformed

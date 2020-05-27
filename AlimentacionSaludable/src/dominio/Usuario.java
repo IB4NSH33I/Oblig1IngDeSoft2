@@ -106,12 +106,4 @@ public final class Usuario extends Persona {
     public String toString() {
         return super.toString();
     }
-
-    public void actualizarPreferenciasUsuario(Usuario usuario, ArrayList<String> pr) {
-        usuario.setPreferencias(pr);
-    }
-
-    public void actualizarRestriccionesUsuario(Usuario usuario, ArrayList<String> restricciones) {
-        usuario.setRestricciones(restricciones);
-    }
 }

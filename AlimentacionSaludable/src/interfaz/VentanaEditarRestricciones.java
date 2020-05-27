@@ -187,7 +187,7 @@ public class VentanaEditarRestricciones extends javax.swing.JDialog {
     private void btnEditarPreferenciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarPreferenciasActionPerformed
         ArrayList<String> restricciones = new ArrayList<>();
         agregarRestriccionesUsuario(restricciones);
-        this.usuarioActual.actualizarRestriccionesUsuario(usuarioActual, restricciones);
+        this.usuarioActual.setRestricciones(restricciones);
         this.panelEditarRestricciones.setVisible(false);
         this.panelListo.setVisible(true);
     }//GEN-LAST:event_btnEditarPreferenciasActionPerformed
