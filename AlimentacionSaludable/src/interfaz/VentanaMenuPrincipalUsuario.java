@@ -718,6 +718,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         panelAlimentoIngerido.setMinimumSize(new java.awt.Dimension(800, 800));
         panelAlimentoIngerido.setLayout(null);
 
+        fechaIngestaUsuario.setNothingAllowed(false);
         fechaIngestaUsuario.setFieldFont(new java.awt.Font("Century Gothic", java.awt.Font.PLAIN, 17));
         panelAlimentoIngerido.add(fechaIngestaUsuario);
         fechaIngestaUsuario.setBounds(49, 477, 178, 38);
