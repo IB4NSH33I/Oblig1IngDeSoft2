@@ -76,6 +76,15 @@ public class ConversacionTest {
         Conversacion conversacionATestear = new Conversacion(usuario, profesional, listaMensajes);
         assertEquals(conversacionATestear.toString(), "No hay mensajes para mostrar");
     }
-
+    
+    @Test
+    public void testAgregarMensaje(){
+        Persona usuario = new Usuario(null, null, null, null, null, null, null, null);
+        Persona profesional = new Profesional(null, null, null, null, null, null, null);
+        ArrayList listaMensajes = new ArrayList<>();
+        Conversacion conversacionATestear = new Conversacion(usuario, profesional, listaMensajes);
+        assertTrue(conversacionATestear.agregarMensaje("Hola", true));
+        
+    }
 
 }

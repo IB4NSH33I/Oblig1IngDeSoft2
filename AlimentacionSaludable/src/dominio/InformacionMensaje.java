@@ -1,7 +1,6 @@
 package dominio;
 
 import java.io.Serializable;
-import java.util.Date;
         
 public final class InformacionMensaje implements Serializable {
 
@@ -28,17 +27,24 @@ public final class InformacionMensaje implements Serializable {
     }
 
     public void setDestinatario(String elDestinatario) {
-        destinatario = elDestinatario;
-
-    }
+    if (elDestinatario == null || elDestinatario.isEmpty()) {
+      this.destinatario = "Destinatario no ingresado";
+    } else {
+      this.destinatario = elDestinatario;
+    } 
+  }
 
     public String getRemitente() {
         return remitente;
     }
 
     public void setRemitente(String elRemitente) {
-        this.remitente = elRemitente;
-    }
+    if (elRemitente == null || elRemitente.isEmpty()) {
+      this.remitente = "Remitente no ingresado";
+    } else {
+      this.remitente = elRemitente;
+    } 
+  }
 
     public void intercambiarRemitente() {
         String aux = destinatario;

@@ -1,14 +1,11 @@
 package dominio;
 
-
 import java.io.BufferedOutputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
-
-import java.util.Currency;
 import javax.swing.ImageIcon;
 
 public final class Sistema implements Serializable {
@@ -52,8 +49,11 @@ public final class Sistema implements Serializable {
     }
 
     public void setPersonaLogueada(Persona personaLogueada) {
-        personaLogueada = personaLogueada;
-        
+        if (personaLogueada == null) {
+            this.personaLogueada = new Usuario(null, null, null, null, null, null, null, null);
+        } else {
+            this.personaLogueada = personaLogueada;
+        }
     }
 
     public ArrayList<Conversacion> getListaConversaciones() {
@@ -345,7 +345,7 @@ public final class Sistema implements Serializable {
     }
 
     public ArrayList getNombresProfesionalesSinConversacionConUsuario(Persona personaLogueada) {
-        ArrayList retorno = copiarLista(getListaProfesionales());
+        ArrayList retorno = new ArrayList<>(getListaProfesionales());
         for (int i = 0; i < getListaConversaciones().size(); i++) {
             Profesional profActual = (Profesional) getListaConversaciones().get(i).getProfesional();
             Persona usuarioActual = getListaConversaciones().get(i).getUsuario();
@@ -356,35 +356,27 @@ public final class Sistema implements Serializable {
         return retorno;
     }
 
-    private ArrayList copiarLista(ArrayList lista) {
-        ArrayList nueva = new ArrayList();
-        for (int i = 0; i < lista.size(); i++) {
-            nueva.add(lista.get(i));
-        }
-        return nueva;
-    }
-
     public boolean agregarIngestaAUsuario(ArrayList<Ingesta> listaIngestasDelUsuario, String fechaIngesta, String nuevoAlimento) {
         boolean ingestaAgregada = false;
-        if (listaIngestasDelUsuario != null) {
-            
-                if (yaExisteIngestaEnEsaFecha(listaIngestasDelUsuario, fechaIngesta)) {
-                    for (int i = 0; i < listaIngestasDelUsuario.size(); i++) {
-                        if (listaIngestasDelUsuario.get(i).getFechaDeIngesta().equals(fechaIngesta)) {
-                            ArrayList<Alimento> listaAlimentosActual = listaIngestasDelUsuario.get(i).getListaAlimentosPorFecha();
-                            Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);
-                            listaAlimentosActual.add(alimentoAAgregar);
-                        }
+        	if (listaIngestasDelUsuario != null && 
+		fechaIngesta != null) {
+            if (yaExisteIngestaEnEsaFecha(listaIngestasDelUsuario, fechaIngesta)) {
+                for (int i = 0; i < listaIngestasDelUsuario.size(); i++) {
+                    if (listaIngestasDelUsuario.get(i).getFechaDeIngesta().equals(fechaIngesta)) {
+                        ArrayList<Alimento> listaAlimentosActual = listaIngestasDelUsuario.get(i).getListaAlimentosPorFecha();
+                        Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);
+                        listaAlimentosActual.add(alimentoAAgregar);
                     }
-                } else {
-                    Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);
-                    ArrayList<Alimento> nuevaLista = new ArrayList<>();
-                    nuevaLista.add(alimentoAAgregar);
-                    Ingesta nuevaIngesta = new Ingesta(fechaIngesta, nuevaLista);
-                    listaIngestasDelUsuario.add(nuevaIngesta);
                 }
-                ingestaAgregada = true;
-            
+            } else {
+                Alimento alimentoAAgregar = devolverAlimentoDadoNombre(nuevoAlimento);
+                ArrayList<Alimento> nuevaLista = new ArrayList<>();
+                nuevaLista.add(alimentoAAgregar);
+                Ingesta nuevaIngesta = new Ingesta(fechaIngesta, nuevaLista);
+                listaIngestasDelUsuario.add(nuevaIngesta);
+            }
+            ingestaAgregada = true;
+
         }
         return ingestaAgregada;
     }
