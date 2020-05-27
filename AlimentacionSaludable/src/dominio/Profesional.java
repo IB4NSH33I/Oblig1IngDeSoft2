@@ -54,8 +54,11 @@ public final class Profesional extends Persona {
     }
 
     public void setPaisGraduacion(String unPaisGraduacion) {
-        paisGraduacion = unPaisGraduacion;
-        
+        if (unPaisGraduacion == null || unPaisGraduacion.isEmpty()) {
+            this.paisGraduacion = "Pais no especificado";
+        } else {
+            this.paisGraduacion = unPaisGraduacion;
+        }
     }
 
     @Override

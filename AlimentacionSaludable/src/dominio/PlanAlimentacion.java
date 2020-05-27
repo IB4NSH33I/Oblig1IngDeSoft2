@@ -1,8 +1,6 @@
 package dominio;
 
 import java.io.Serializable;
-import java.util.Objects;
-import java.util.Currency;
 
 public final class PlanAlimentacion implements Serializable {
 
@@ -29,10 +27,13 @@ public final class PlanAlimentacion implements Serializable {
         return usuario;
     }
 
-    public void setUsuario(Usuario unUsuario) {
-        usuario = unUsuario;
-        
-    }
+  public void setUsuario(Usuario unUsuario) {
+    if (unUsuario == null) {
+      this.usuario = new Usuario(null, null, null, null, null, null, null, null);
+    } else {
+      this.usuario = unUsuario;
+    } 
+  }
 
     public Profesional getProfesional() {
         return this.profesional;
@@ -67,9 +68,12 @@ public final class PlanAlimentacion implements Serializable {
     }
 
     public void setNombreDelPlan(String unNombreDelPlan) {
-        nombreDelPlan = unNombreDelPlan;
-       
-    }
+    if (unNombreDelPlan == null || unNombreDelPlan.isEmpty()) {
+      this.nombreDelPlan = "Plan de alimentación";
+    } else {
+      this.nombreDelPlan = unNombreDelPlan;
+    } 
+  }
 
     @Override
     public String toString() {

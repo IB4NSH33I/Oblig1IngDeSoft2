@@ -16,19 +16,21 @@ public final class ComposicionAlimento implements Serializable {
         return this.nutriente;
     }
 
-    public void setNutriente(String unNutriente) {
-        this.nutriente = unNutriente;
-
-
-    }
+  public void setNutriente(String unNutriente) {
+    if (unNutriente == null || unNutriente.isEmpty()) {
+      this.nutriente = "No definido";
+    } else {
+      this.nutriente = unNutriente;
+    } 
+  }
 
     public float getProporcion() {
         return this.proporcion;
     }
 
     public void setProporcion(float unaProporcion) {
-        if (unaProporcion <= 0) {
-            this.proporcion = 1;
+        if (unaProporcion <= 0.0F) {
+            this.proporcion = 1.0F;
         } else {
             this.proporcion = unaProporcion;
         }
