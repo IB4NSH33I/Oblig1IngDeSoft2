@@ -345,7 +345,7 @@ public final class Sistema implements Serializable {
     }
 
     public ArrayList getNombresProfesionalesSinConversacionConUsuario(Persona personaLogueada) {
-        ArrayList retorno = copiarLista(getListaProfesionales());
+        ArrayList retorno = new ArrayList<>(getListaProfesionales());
         for (int i = 0; i < getListaConversaciones().size(); i++) {
             Profesional profActual = (Profesional) getListaConversaciones().get(i).getProfesional();
             Persona usuarioActual = getListaConversaciones().get(i).getUsuario();
@@ -354,14 +354,6 @@ public final class Sistema implements Serializable {
             }
         }
         return retorno;
-    }
-
-    private ArrayList copiarLista(ArrayList lista) {
-        ArrayList nueva = new ArrayList();
-        for (int i = 0; i < lista.size(); i++) {
-            nueva.add(lista.get(i));
-        }
-        return nueva;
     }
 
     public boolean agregarIngestaAUsuario(ArrayList<Ingesta> listaIngestasDelUsuario, String fechaIngesta, String nuevoAlimento) {
