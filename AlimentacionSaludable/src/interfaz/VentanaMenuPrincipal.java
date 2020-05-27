@@ -119,7 +119,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
         panel2.add(lblNombre);
         lblNombre.setBounds(450, 200, 181, 38);
 
-        listaUsuariosVentana.setBackground(new java.awt.Color(51, 51, 51));
+        listaUsuariosVentana.setBackground(new java.awt.Color(227, 227, 227));
         listaUsuariosVentana.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         listaUsuariosVentana.setForeground(new java.awt.Color(255, 255, 255));
         listaUsuariosVentana.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -133,7 +133,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
         panel2.add(jScrollPane2);
         jScrollPane2.setBounds(80, 250, 230, 330);
 
-        listaProfesionalesVentana.setBackground(new java.awt.Color(51, 51, 51));
+        listaProfesionalesVentana.setBackground(new java.awt.Color(227, 227, 227));
         listaProfesionalesVentana.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
         listaProfesionalesVentana.setForeground(new java.awt.Color(255, 255, 255));
         listaProfesionalesVentana.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -185,7 +185,6 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
         btnCerrarSistema.setBorderPainted(false);
         btnCerrarSistema.setContentAreaFilled(false);
         btnCerrarSistema.setFocusPainted(false);
-        btnCerrarSistema.setOpaque(false);
         btnCerrarSistema.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCerrarSistemaActionPerformed(evt);

@@ -923,7 +923,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         panelIzquierdo.setMinimumSize(new java.awt.Dimension(320, 500));
         panelIzquierdo.setPreferredSize(new java.awt.Dimension(320, 500));
 
-        listaPlanesPendientes.setBackground(new java.awt.Color(238, 238, 238));
+        listaPlanesPendientes.setBackground(new java.awt.Color(227, 227, 227));
         listaPlanesPendientes.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         listaPlanesPendientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listaPlanesPendientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -1018,6 +1018,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblTxtRestricciones.setForeground(new java.awt.Color(255, 255, 255));
         lblTxtRestricciones.setText("Restricciones:");
 
+        listaRestricciones.setBackground(new java.awt.Color(227, 227, 227));
         listaRestricciones.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane5.setViewportView(listaRestricciones);
 
@@ -1025,6 +1026,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblPreferencias.setForeground(new java.awt.Color(255, 255, 255));
         lblPreferencias.setText("Preferencias:");
 
+        listaPreferencias.setBackground(new java.awt.Color(227, 227, 227));
         listaPreferencias.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane6.setViewportView(listaPreferencias);
 
@@ -1032,6 +1034,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblIngestas.setForeground(new java.awt.Color(255, 255, 255));
         lblIngestas.setText("Ingestas:");
 
+        listaIngestas.setBackground(new java.awt.Color(227, 227, 227));
         listaIngestas.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane7.setViewportView(listaIngestas);
 
