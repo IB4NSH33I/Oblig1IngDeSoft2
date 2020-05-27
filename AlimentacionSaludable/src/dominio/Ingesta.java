@@ -17,13 +17,13 @@ public final class Ingesta implements Serializable {
         return this.fechaDeIngesta;
     }
 
-  public void setFechaDeIngesta(String unaFecha) {
-    if (unaFecha == null || unaFecha.isEmpty()) {
-      this.fechaDeIngesta = "Fecha de ingesta no registrada";
-    } else {
-      this.fechaDeIngesta = unaFecha;
-    } 
-  }
+    public void setFechaDeIngesta(String unaFecha) {
+        if (unaFecha == null || unaFecha.isEmpty()) {
+            this.fechaDeIngesta = "Fecha de ingesta no registrada";
+        } else {
+            this.fechaDeIngesta = unaFecha;
+        }
+    }
 
     public ArrayList<Alimento> getListaAlimentosPorFecha() {
         if (this.listaAlimentosPorFecha.isEmpty()) {
@@ -52,10 +52,14 @@ public final class Ingesta implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        Ingesta otraIngesta = (Ingesta) obj;
-        boolean sonIguales = this.getFechaDeIngesta().equals(otraIngesta.getFechaDeIngesta());
-        sonIguales = sonIguales && this.getListaAlimentosPorFecha().equals(otraIngesta.getListaAlimentosPorFecha());
-        return sonIguales;
+        try {
+            Ingesta otraIngesta = (Ingesta) obj;
+            boolean sonIguales = this.getFechaDeIngesta().equals(otraIngesta.getFechaDeIngesta());
+            sonIguales = sonIguales && this.getListaAlimentosPorFecha().equals(otraIngesta.getListaAlimentosPorFecha());
+            return sonIguales;
+        } catch (NullPointerException e) {
+            return false;
+        }
     }
 
 }
