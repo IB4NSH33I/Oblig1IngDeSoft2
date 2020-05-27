@@ -121,8 +121,8 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
 
         listaUsuariosVentana.setBackground(new java.awt.Color(227, 227, 227));
         listaUsuariosVentana.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        listaUsuariosVentana.setForeground(new java.awt.Color(255, 255, 255));
         listaUsuariosVentana.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        listaUsuariosVentana.setSelectionForeground(new java.awt.Color(0, 0, 0));
         listaUsuariosVentana.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaUsuariosVentanaValueChanged(evt);
@@ -135,7 +135,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
 
         listaProfesionalesVentana.setBackground(new java.awt.Color(227, 227, 227));
         listaProfesionalesVentana.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        listaProfesionalesVentana.setForeground(new java.awt.Color(255, 255, 255));
+        listaProfesionalesVentana.setSelectionForeground(new java.awt.Color(0, 0, 0));
         listaProfesionalesVentana.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
                 listaProfesionalesVentanaValueChanged(evt);
