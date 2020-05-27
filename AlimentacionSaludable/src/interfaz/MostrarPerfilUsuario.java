@@ -101,18 +101,21 @@ public class MostrarPerfilUsuario extends javax.swing.JDialog {
         lblRestricciones.setForeground(new java.awt.Color(255, 255, 255));
         lblRestricciones.setText("Restricciones:");
 
+        listaRestricciones.setBackground(new java.awt.Color(227, 227, 227));
         jScrollPane2.setViewportView(listaRestricciones);
 
         lblPreferencias.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         lblPreferencias.setForeground(new java.awt.Color(255, 255, 255));
         lblPreferencias.setText("Preferencias:");
 
+        listaPreferencias.setBackground(new java.awt.Color(227, 227, 227));
         jScrollPane1.setViewportView(listaPreferencias);
 
         lblTxtIngestas.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
         lblTxtIngestas.setForeground(new java.awt.Color(255, 255, 255));
         lblTxtIngestas.setText("Ingestas:");
 
+        listaIngestas.setBackground(new java.awt.Color(227, 227, 227));
         jScrollPane3.setViewportView(listaIngestas);
 
         lblFechaNacimientoUsuario.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
@@ -181,9 +184,9 @@ public class MostrarPerfilUsuario extends javax.swing.JDialog {
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(146, Short.MAX_VALUE))
+                .addContainerGap(139, Short.MAX_VALUE))
         );
 
         getContentPane().add(jPanel1);

@@ -415,12 +415,12 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         });
 
         txtMostrarConversacion.setEditable(false);
-        txtMostrarConversacion.setBackground(new java.awt.Color(238, 238, 238));
+        txtMostrarConversacion.setBackground(new java.awt.Color(227, 227, 227));
         txtMostrarConversacion.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
         txtMostrarConversacion.setAutoscrolls(false);
         jScrollPane2.setViewportView(txtMostrarConversacion);
 
-        txtMensajeNuevo.setBackground(new java.awt.Color(238, 238, 238));
+        txtMensajeNuevo.setBackground(new java.awt.Color(227, 227, 227));
         txtMensajeNuevo.setColumns(20);
         txtMensajeNuevo.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
         txtMensajeNuevo.setRows(5);
@@ -485,7 +485,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         panelConsultaConProfesional.add(btnNuevaConversacion);
         btnNuevaConversacion.setBounds(83, 588, 93, 57);
 
-        listaConversaciones.setBackground(new java.awt.Color(238, 238, 238));
+        listaConversaciones.setBackground(new java.awt.Color(227, 227, 227));
         listaConversaciones.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         listaConversaciones.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -510,6 +510,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         panelElegirProfesional.setMinimumSize(new java.awt.Dimension(800, 800));
         panelElegirProfesional.setPreferredSize(new java.awt.Dimension(800, 800));
 
+        listaElegirProfesionales.setBackground(new java.awt.Color(227, 227, 227));
         listaElegirProfesionales.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         listaElegirProfesionales.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
             public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
@@ -747,6 +748,7 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         panelAlimentoIngerido.add(lblAlimentoIngeridoSeleccionado);
         lblAlimentoIngeridoSeleccionado.setBounds(49, 258, 624, 38);
 
+        comboAlimentosEnSistema.setBackground(new java.awt.Color(227, 227, 227));
         comboAlimentosEnSistema.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
         comboAlimentosEnSistema.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione..." }));
         comboAlimentosEnSistema.addItemListener(new java.awt.event.ItemListener() {
