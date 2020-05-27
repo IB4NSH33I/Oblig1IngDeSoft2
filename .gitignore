@@ -1,0 +1,5 @@
+AlimentacionSaludable/build/
+AlimentacionSaludable/nbbuild/
+AlimentacionSaludable/dist/
+AlimentacionSaludable/nbdist/
+.nb-gradle/
