@@ -1411,6 +1411,8 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.sistema.guardarDatosSistema();
+        this.dispose();
+
     }//GEN-LAST:event_formWindowClosing
 
     private void btnEditarRestriccionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarRestriccionesActionPerformed

@@ -2053,6 +2053,8 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         sistema.guardarDatosSistema();
+        this.dispose();
+
     }//GEN-LAST:event_formWindowClosing
 
     private void lblValidarNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblValidarNombreFocusLost
