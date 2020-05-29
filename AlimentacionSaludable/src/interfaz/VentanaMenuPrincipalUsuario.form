@@ -7,7 +7,6 @@
       <Dimension value="[1060, 800]"/>
     </Property>
     <Property name="modal" type="boolean" value="true"/>
-    <Property name="undecorated" type="boolean" value="true"/>
     <Property name="resizable" type="boolean" value="false"/>
     <Property name="size" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1060, 800]"/>

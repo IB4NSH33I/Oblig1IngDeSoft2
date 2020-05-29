@@ -59,13 +59,11 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
         btnAgregarProfesional = new javax.swing.JLabel();
         lblSinUsuarios = new javax.swing.JLabel();
         btnAgregarProfesional1 = new javax.swing.JLabel();
-        btnCerrarSistema = new javax.swing.JButton();
         lblNombre2 = new javax.swing.JLabel();
         lblSinUsuarios1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1060, 800));
-        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(1060, 800));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -182,7 +180,6 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
         lblSinUsuarios.setMinimumSize(new java.awt.Dimension(255, 76));
         panel2.add(lblSinUsuarios);
         lblSinUsuarios.setBounds(450, 330, 200, 120);
-        lblSinUsuarios.getAccessibleContext().setAccessibleName("<html>No se registraron <br>profesionales</html>");
 
         btnAgregarProfesional1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAgregarProfesional.png"))); // NOI18N
         btnAgregarProfesional1.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -192,20 +189,6 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
         });
         panel2.add(btnAgregarProfesional1);
         btnAgregarProfesional1.setBounds(560, 150, 100, 90);
-
-        btnCerrarSistema.setBackground(new java.awt.Color(51, 51, 51));
-        btnCerrarSistema.setForeground(new java.awt.Color(51, 51, 51));
-        btnCerrarSistema.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/icons8_Close_Window_48px.png"))); // NOI18N
-        btnCerrarSistema.setBorderPainted(false);
-        btnCerrarSistema.setContentAreaFilled(false);
-        btnCerrarSistema.setFocusPainted(false);
-        btnCerrarSistema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarSistemaActionPerformed(evt);
-            }
-        });
-        panel2.add(btnCerrarSistema);
-        btnCerrarSistema.setBounds(730, 10, 50, 50);
 
         lblNombre2.setFont(new java.awt.Font("Century Gothic", 0, 30)); // NOI18N
         lblNombre2.setForeground(new java.awt.Color(255, 255, 255));
@@ -229,6 +212,7 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.sistema.guardarDatosSistema();
+        this.dispose();
     }//GEN-LAST:event_formWindowClosing
 
     private void listaUsuariosVentanaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaUsuariosVentanaValueChanged
@@ -264,17 +248,11 @@ public class VentanaMenuPrincipal extends javax.swing.JDialog {
         ventanaRegProfesional.setVisible(true);
     }//GEN-LAST:event_btnAgregarProfesional1MouseClicked
 
-    private void btnCerrarSistemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarSistemaActionPerformed
-        this.sistema.guardarDatosSistema();
-        this.dispose();
-    }//GEN-LAST:event_btnCerrarSistemaActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel btnAgregarProfesional;
     private javax.swing.JLabel btnAgregarProfesional1;
     private javax.swing.JLabel btnAgregarUsuario;
-    private javax.swing.JButton btnCerrarSistema;
     private javax.swing.JLabel icono;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
