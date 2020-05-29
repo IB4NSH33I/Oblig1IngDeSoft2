@@ -39,6 +39,14 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         Calendar fecha = new GregorianCalendar();
         this.fechaIngestaUsuario.setMaxDate(fecha);
         this.panelVacio.setVisible(true);
+        String[] listaAlimentosPopularesGlobalmente = setListaAlimentosPopularesGlobalmente();
+        this.alimentosPopularesGlobalesLabel.setVisible(true);
+        this.alimentosPopularesGlobales.setVisible(true);
+        this.alimentosPopularesGlobales.setListData(listaAlimentosPopularesGlobalmente);
+        String[] listaAlimentosPopularesLocalmente = setListaAlimentosPopularesLocalmente();
+        this.alimentosPopularesLocalesLabel.setVisible(true);
+        this.alimentosPopularesLocales.setVisible(true);
+        this.alimentosPopularesLocales.setListData(listaAlimentosPopularesLocalmente);
     }
 
     public Sistema getSistema() {
@@ -172,6 +180,12 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         btnVerPlanesExistentes = new javax.swing.JButton();
         panelVacio = new javax.swing.JPanel();
         btnAyuda = new javax.swing.JButton();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        alimentosPopularesGlobales = new javax.swing.JList();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        alimentosPopularesLocales = new javax.swing.JList();
+        alimentosPopularesLocalesLabel = new javax.swing.JLabel();
+        alimentosPopularesGlobalesLabel = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1060, 800));
@@ -1149,6 +1163,32 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
             }
         });
 
+        alimentosPopularesGlobales.setBackground(new java.awt.Color(227, 227, 227));
+        alimentosPopularesGlobales.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
+        alimentosPopularesGlobales.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                alimentosPopularesGlobalesValueChanged(evt);
+            }
+        });
+        jScrollPane8.setViewportView(alimentosPopularesGlobales);
+
+        alimentosPopularesLocales.setBackground(new java.awt.Color(227, 227, 227));
+        alimentosPopularesLocales.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
+        alimentosPopularesLocales.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                alimentosPopularesLocalesValueChanged(evt);
+            }
+        });
+        jScrollPane9.setViewportView(alimentosPopularesLocales);
+
+        alimentosPopularesLocalesLabel.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        alimentosPopularesLocalesLabel.setForeground(new java.awt.Color(255, 255, 255));
+        alimentosPopularesLocalesLabel.setText("Alimentos mas populares globalmente");
+
+        alimentosPopularesGlobalesLabel.setFont(new java.awt.Font("Century Gothic", 0, 16)); // NOI18N
+        alimentosPopularesGlobalesLabel.setForeground(new java.awt.Color(255, 255, 255));
+        alimentosPopularesGlobalesLabel.setText("Alimentos mas populares del usuario");
+
         javax.swing.GroupLayout panelVacioLayout = new javax.swing.GroupLayout(panelVacio);
         panelVacio.setLayout(panelVacioLayout);
         panelVacioLayout.setHorizontalGroup(
@@ -1157,11 +1197,29 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
                 .addContainerGap(704, Short.MAX_VALUE)
                 .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(panelVacioLayout.createSequentialGroup()
+                .addGap(82, 82, 82)
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alimentosPopularesLocalesLabel))
+                .addGap(54, 54, 54)
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(alimentosPopularesGlobalesLabel))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         panelVacioLayout.setVerticalGroup(
             panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelVacioLayout.createSequentialGroup()
-                .addContainerGap(708, Short.MAX_VALUE)
+                .addContainerGap(287, Short.MAX_VALUE)
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(alimentosPopularesLocalesLabel)
+                    .addComponent(alimentosPopularesGlobalesLabel))
+                .addGap(18, 18, 18)
+                .addGroup(panelVacioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(238, 238, 238)
                 .addComponent(btnAyuda, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -1446,6 +1504,14 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         ayuda.setVisible(true);
     }//GEN-LAST:event_btnAyudaActionPerformed
 
+    private void alimentosPopularesGlobalesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_alimentosPopularesGlobalesValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alimentosPopularesGlobalesValueChanged
+
+    private void alimentosPopularesLocalesValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_alimentosPopularesLocalesValueChanged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_alimentosPopularesLocalesValueChanged
+
     private void ocultarPaneles() {
         this.btnConsultaConProfesional.setEnabled(true);
         this.btnIngresarAlimentoIngerido.setEnabled(true);
@@ -1468,6 +1534,10 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         this.panelNoHayConversacionesCreadas.setVisible(false);
         this.panelNoHayPlanesDisponibles.setVisible(false);
         this.panelVacio.setVisible(false);
+        this.alimentosPopularesGlobalesLabel.setVisible(false);
+        this.alimentosPopularesGlobales.setVisible(false);
+        this.alimentosPopularesLocalesLabel.setVisible(false);
+        this.alimentosPopularesLocales.setVisible(false);
     }
 
     private void actualizarConversaciones(String destinatario) {
@@ -1483,6 +1553,10 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JList alimentosPopularesGlobales;
+    private javax.swing.JLabel alimentosPopularesGlobalesLabel;
+    private javax.swing.JList alimentosPopularesLocales;
+    private javax.swing.JLabel alimentosPopularesLocalesLabel;
     private javax.swing.JButton btnAceptarSolicitudPlanAlimentacion;
     private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnConsultaConProfesional;
@@ -1514,6 +1588,8 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane40;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JLabel lblAlimentoIngerido;
     private javax.swing.JLabel lblAlimentoIngerido2;
     private javax.swing.JLabel lblAlimentoIngeridoSeleccionado;
@@ -1618,4 +1694,96 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
         return actual;
     }
 
+    private String[] setListaAlimentosPopularesGlobalmente() {
+        String[] retorno = new String[3];
+        ArrayList<Alimento> alimentos = sistema.getListaAlimentos();
+        int[] contador = new int[alimentos.size()];
+        ArrayList<Usuario> usuarios = sistema.getListaUsuarios();
+        for (int i = 0; i < usuarios.size(); i++) {
+            ArrayList<Ingesta> ingestas = usuarios.get(i).getAlimentosIngeridos();
+            for (int j = 0; j < ingestas.size(); j++) {
+                ArrayList<Alimento> alimentosIngeridos = ingestas.get(j).getListaAlimentosPorFecha();
+                for (int k = 0; k < alimentosIngeridos.size(); k++) {
+                    contador[alimentos.indexOf(alimentosIngeridos.get(k))]++;
+                }
+            }
+        }
+        int contador1 = 0, contador2 = 0, contador3 = 0;
+        int posicion1 = 0, posicion2 = 1, posicion3 = 2;
+        for (int i = 0; i < contador.length; i++) {
+            if (contador1 < contador[i]) {
+                contador3 = contador2;
+                posicion3 = posicion2;
+                contador2 = contador1;
+                posicion2 = posicion1;
+                contador1 = contador[i];
+                posicion1 = i;
+            } else if (contador2 < contador[i]) {
+                contador3 = contador2;
+                posicion3 = posicion2;
+                contador2 = contador[i];
+                posicion2 = i;
+            } else if (contador3 < contador[i]) {
+                contador3 = contador[i];
+                posicion3 = i;
+            }
+        }
+        if (alimentos.size() == 1) {
+            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+        } else if (alimentos.size() == 2) {
+            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
+        } else if (alimentos.size() >= 3) {
+            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
+            retorno[2] = alimentos.get(posicion3).getNombre() + " - " + contador3;
+        }
+        return retorno;
+    }
+
+    private String[] setListaAlimentosPopularesLocalmente() {
+        String[] retorno = new String[3];
+        ArrayList<Alimento> alimentos = sistema.getListaAlimentos();
+        int[] contador = new int[alimentos.size()];
+        ArrayList<Usuario> usuarios = sistema.getListaUsuarios();
+        Usuario usuario = usuarios.get(usuarios.indexOf(sistema.getPersonaLogueada()));
+        ArrayList<Ingesta> ingestas = usuario.getAlimentosIngeridos();
+        for (int j = 0; j < ingestas.size(); j++) {
+            ArrayList<Alimento> alimentosIngeridos = ingestas.get(j).getListaAlimentosPorFecha();
+            for (int k = 0; k < alimentosIngeridos.size(); k++) {
+                contador[alimentos.indexOf(alimentosIngeridos.get(k))]++;
+            }
+        }
+        int contador1 = 0, contador2 = 0, contador3 = 0;
+        int posicion1 = 0, posicion2 = 1, posicion3 = 2;
+        for (int i = 0; i < contador.length; i++) {
+            if (contador1 < contador[i]) {
+                contador3 = contador2;
+                posicion3 = posicion2;
+                contador2 = contador1;
+                posicion2 = posicion1;
+                contador1 = contador[i];
+                posicion1 = i;
+            } else if (contador2 < contador[i]) {
+                contador3 = contador2;
+                posicion3 = posicion2;
+                contador2 = contador[i];
+                posicion2 = i;
+            } else if (contador3 < contador[i]) {
+                contador3 = contador[i];
+                posicion3 = i;
+            }
+        }
+        if (alimentos.size() == 1) {
+            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+        } else if (alimentos.size() == 2) {
+            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
+        } else if (alimentos.size() >= 3) {
+            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
+            retorno[2] = alimentos.get(posicion3).getNombre() + " - " + contador3;
+        }
+        return retorno;
+    }
 }
