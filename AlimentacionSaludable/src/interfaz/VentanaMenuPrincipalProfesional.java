@@ -1820,7 +1820,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
 
     private void btnIngresarFotoAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarFotoAlimentoActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png");
+        FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png", "JPEG", "jpeg", "JPG", "jpg", "GIF", "gif");
         fileChooser.setFileFilter(file);
         int imagen = fileChooser.showOpenDialog(this);
         if (imagen == JFileChooser.APPROVE_OPTION) {
