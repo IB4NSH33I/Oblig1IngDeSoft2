@@ -38,11 +38,11 @@ public final class Alimento implements Serializable {
         return this.tipoAlimento;
     }
 
-    public void setTipoAlimento(String TA) {
-        if (TA == null || TA.isEmpty()) {
+    public void setTipoAlimento(String tipoAli) {
+        if (tipoAli == null || tipoAli.isEmpty()) {
             this.tipoAlimento = "No definido";
         } else {
-            this.tipoAlimento = TA;
+            this.tipoAlimento = tipoAli;
         }
     }
 

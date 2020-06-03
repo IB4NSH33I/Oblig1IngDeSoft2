@@ -8,9 +8,9 @@ public final class Ingesta implements Serializable {
     public String fechaDeIngesta;
     private ArrayList<Alimento> listaAlimentosPorFecha;
 
-    public Ingesta(String f, ArrayList<Alimento> LA) {
+    public Ingesta(String f, ArrayList<Alimento> listaAlimentos) {
         setFechaDeIngesta(f);
-        setLAPF(LA);
+        setLAPF(listaAlimentos);
     }
 
     public String getFechaDeIngesta() {
