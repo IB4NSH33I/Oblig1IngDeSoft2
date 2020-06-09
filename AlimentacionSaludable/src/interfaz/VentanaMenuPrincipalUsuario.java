@@ -1730,14 +1730,14 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
             }
         }
         if (alimentos.size() == 1) {
-            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            if (contador1 != 0) retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
         } else if (alimentos.size() == 2) {
-            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
-            retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
+            if (contador1 != 0) retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            if (contador2 != 0) retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
         } else if (alimentos.size() >= 3) {
-            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
-            retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
-            retorno[2] = alimentos.get(posicion3).getNombre() + " - " + contador3;
+            if (contador1 != 0) retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            if (contador2 != 0) retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
+            if (contador3 != 0) retorno[2] = alimentos.get(posicion3).getNombre() + " - " + contador3;
         }
         return retorno;
     }
@@ -1776,14 +1776,14 @@ public class VentanaMenuPrincipalUsuario extends javax.swing.JDialog {
             }
         }
         if (alimentos.size() == 1) {
-            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            if (contador1 != 0) retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
         } else if (alimentos.size() == 2) {
-            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
-            retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
+            if (contador1 != 0) retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            if (contador2 != 0) retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
         } else if (alimentos.size() >= 3) {
-            retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
-            retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
-            retorno[2] = alimentos.get(posicion3).getNombre() + " - " + contador3;
+            if (contador1 != 0) retorno[0] = alimentos.get(posicion1).getNombre() + " - " + contador1;
+            if (contador2 != 0) retorno[1] = alimentos.get(posicion2).getNombre() + " - " + contador2;
+            if (contador3 != 0) retorno[2] = alimentos.get(posicion3).getNombre() + " - " + contador3;
         }
         return retorno;
     }

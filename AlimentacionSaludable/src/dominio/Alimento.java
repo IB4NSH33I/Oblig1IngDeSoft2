@@ -10,7 +10,7 @@ public final class Alimento implements Serializable {
     private String tipoAlimento;
     private ArrayList<ComposicionAlimento> listaNutrientesConProporcion;
     public ImageIcon fotoDelAlimento;
-
+    
     public Alimento(String unNombre,
             String unTipoAlimento,
             ArrayList<ComposicionAlimento> listaNutrientes,
