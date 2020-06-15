@@ -2,9 +2,7 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
 import javax.swing.ImageIcon;
-import java.util.Currency;
 
 public final class Alimento implements Serializable {
 
@@ -12,7 +10,7 @@ public final class Alimento implements Serializable {
     private String tipoAlimento;
     private ArrayList<ComposicionAlimento> listaNutrientesConProporcion;
     public ImageIcon fotoDelAlimento;
-
+    
     public Alimento(String unNombre,
             String unTipoAlimento,
             ArrayList<ComposicionAlimento> listaNutrientes,
@@ -40,9 +38,12 @@ public final class Alimento implements Serializable {
         return this.tipoAlimento;
     }
 
-    public void setTipoAlimento(String TA) {
-        tipoAlimento = TA;
-        
+    public void setTipoAlimento(String tipoAli) {
+        if (tipoAli == null || tipoAli.isEmpty()) {
+            this.tipoAlimento = "No definido";
+        } else {
+            this.tipoAlimento = tipoAli;
+        }
     }
 
     public ArrayList<ComposicionAlimento> getListaNutrientesConProporcion() {
@@ -80,8 +81,13 @@ public final class Alimento implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        Alimento otroAlimento = (Alimento) obj;
-        return (this.getNombre().equals(otroAlimento.getNombre()));
+        try {
+            Alimento otroAlimento = (Alimento) obj;
+            return (this.getNombre().equals(otroAlimento.getNombre()));
+        } catch (NullPointerException e) {
+            return false;
+        }
+
     }
 
 }

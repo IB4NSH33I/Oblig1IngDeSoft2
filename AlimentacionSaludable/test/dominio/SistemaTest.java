@@ -563,4 +563,47 @@ public class SistemaTest {
         assertEquals(sistemaATestear.devolverListaDiasDeLaSemana(), listaEsperada);
     }
 
+    @Test
+    public void testDevolverListaPaises() {
+        Sistema test = new Sistema();
+        ArrayList<String> lstNacionalidades = new ArrayList<>();
+        lstNacionalidades.add(Paises.Argentina.toString());
+        lstNacionalidades.add(Paises.Bolivia.toString());
+        lstNacionalidades.add(Paises.Brasil.toString());
+        lstNacionalidades.add(Paises.Chile.toString());
+        lstNacionalidades.add(Paises.Colombia.toString());
+        lstNacionalidades.add("Costa Rica");
+        lstNacionalidades.add(Paises.Cuba.toString());
+        lstNacionalidades.add(Paises.Ecuador.toString());
+        lstNacionalidades.add("El Salvador");
+        lstNacionalidades.add("Guayana Francesa");
+        lstNacionalidades.add(Paises.Granada.toString());
+        lstNacionalidades.add(Paises.Guatemala.toString());
+        lstNacionalidades.add(Paises.Guayana.toString());
+        lstNacionalidades.add(Paises.Haití.toString());
+        lstNacionalidades.add(Paises.Honduras.toString());
+        lstNacionalidades.add(Paises.Jamaica.toString());
+        lstNacionalidades.add(Paises.México.toString());
+        lstNacionalidades.add(Paises.Nicaragua.toString());
+        lstNacionalidades.add(Paises.Paraguay.toString());
+        lstNacionalidades.add(Paises.Panamá.toString());
+        lstNacionalidades.add(Paises.Perú.toString());
+        lstNacionalidades.add("Puerto Rico");
+        lstNacionalidades.add("República Dominicana");
+        lstNacionalidades.add(Paises.Surinam.toString());
+        lstNacionalidades.add(Paises.Uruguay.toString());
+        lstNacionalidades.add(Paises.Venezuela.toString());
+        assertEquals(lstNacionalidades, test.devolverListaPaises());
+    }
+    
+    @Test
+    public void testGetListaNombresUsuariosConversacionesPendientes() {
+        Sistema test = new Sistema();
+        Usuario u = new Usuario("TestUsuario",null,null,null,null,null,null,null);
+        Profesional p = new Profesional("TestProfesional",null,null,null,null,null,null);
+        test.agregarUsuarioALaLista(u);
+        test.agregarProfesionalALaLista(p);
+        test.crearConversacion(u, p, "Test", true);
+        assertTrue("TestUsuario".equals(test.getListaNombresUsuariosConversacionesPendientes("TestProfesional")[0]));
+    }
 }

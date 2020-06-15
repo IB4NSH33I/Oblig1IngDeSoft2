@@ -97,7 +97,6 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1060, 800));
-        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(1060, 800));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -364,6 +363,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
                 (datechooser.view.BackRenderer)null,
                 false,
                 true)));
+    dateChooserFechaNacimiento.setNothingAllowed(false);
     dateChooserFechaNacimiento.setFieldFont(new java.awt.Font("Century Gothic", java.awt.Font.PLAIN, 19));
     dateChooserFechaNacimiento.setMaxDate(new java.util.GregorianCalendar(2017, 10, 9));
     dateChooserFechaNacimiento.setMinDate(new java.util.GregorianCalendar(1917, 10, 1));
@@ -460,7 +460,7 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
 
     private void btnIngresarFotoPerfilActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarFotoPerfilActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png");
+        FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png", "JPEG", "jpeg", "JPG", "jpg", "GIF", "gif");
         fileChooser.setFileFilter(file);
         fileChooser.setAcceptAllFileFilterUsed(false);
         int imagen = fileChooser.showOpenDialog(this);
@@ -499,6 +499,8 @@ public class VentanaRegistrarUsuario extends javax.swing.JDialog {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         this.sistema.guardarDatosSistema();
+        this.dispose();
+
     }//GEN-LAST:event_formWindowClosing
 
     private void listaNacionalidadItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaNacionalidadItemStateChanged

@@ -2,17 +2,15 @@ package dominio;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.Arrays;
 
 public final class Ingesta implements Serializable {
 
     public String fechaDeIngesta;
     private ArrayList<Alimento> listaAlimentosPorFecha;
 
-    public Ingesta(String f, ArrayList<Alimento> LA) {
+    public Ingesta(String f, ArrayList<Alimento> listaAlimentos) {
         setFechaDeIngesta(f);
-        setLAPF(LA);
+        setLAPF(listaAlimentos);
     }
 
     public String getFechaDeIngesta() {
@@ -20,7 +18,11 @@ public final class Ingesta implements Serializable {
     }
 
     public void setFechaDeIngesta(String unaFecha) {
-        this.fechaDeIngesta = unaFecha;
+        if (unaFecha == null || unaFecha.isEmpty()) {
+            this.fechaDeIngesta = "Fecha de ingesta no registrada";
+        } else {
+            this.fechaDeIngesta = unaFecha;
+        }
     }
 
     public ArrayList<Alimento> getListaAlimentosPorFecha() {
@@ -50,10 +52,14 @@ public final class Ingesta implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        Ingesta otraIngesta = (Ingesta) obj;
-        boolean sonIguales = this.getFechaDeIngesta().equals(otraIngesta.getFechaDeIngesta());
-        sonIguales = sonIguales && this.getListaAlimentosPorFecha().equals(otraIngesta.getListaAlimentosPorFecha());
-        return sonIguales;
+        try {
+            Ingesta otraIngesta = (Ingesta) obj;
+            boolean sonIguales = this.getFechaDeIngesta().equals(otraIngesta.getFechaDeIngesta());
+            sonIguales = sonIguales && this.getListaAlimentosPorFecha().equals(otraIngesta.getListaAlimentosPorFecha());
+            return sonIguales;
+        } catch (NullPointerException e) {
+            return false;
+        }
     }
 
 }

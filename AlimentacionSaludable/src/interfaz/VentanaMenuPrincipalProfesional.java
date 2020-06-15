@@ -18,8 +18,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     private String usuarioSeleccionado;
     private ImageIcon fotoDeAlimentoActual;
     private final boolean[] nutrientesSeleccionados;
-    private String diaDeLaSemanaAnterior;
-    private String diaDeLaSemanaActual;
+    private int diaSeleccionado;
     private final String[][] planAlimentacion;
 
     public VentanaMenuPrincipalProfesional(Sistema unSistema) {
@@ -29,9 +28,13 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         ocultarPaneles();
         this.panelVacio.setVisible(true);
         this.nutrientesSeleccionados = new boolean[7];
-        this.diaDeLaSemanaAnterior = "Lunes";
         this.planAlimentacion = new String[7][3];
-        this.diaDeLaSemanaActual = "Lunes";
+        for (int i = 0; i < planAlimentacion.length; i++) {
+            for (int j = 0; j < planAlimentacion[0].length; j++) {
+                planAlimentacion[i][j] = "";
+            }
+
+        }
         this.fotoDeAlimentoActual = new ImageIcon(getClass().getResource("/Imagenes/fotoDelAlimentoEstandar.png"));
         lblValidarTipoAlimento.setVisible(false);
         lblValidarNombre.setVisible(false);
@@ -61,6 +64,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        diaSemana = new javax.swing.ButtonGroup();
         panelMenu = new javax.swing.JPanel();
         btnConsultasPendientes = new javax.swing.JButton();
         btnHome = new javax.swing.JButton();
@@ -103,21 +107,16 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblVerPerfilUsuario = new javax.swing.JLabel();
         panelElaborarPlan = new javax.swing.JPanel();
         lblElaborarNuevoPlan = new javax.swing.JLabel();
-        lblComida = new javax.swing.JLabel();
         lblAlimentos = new javax.swing.JLabel();
-        listaDiasDeLaSemana = new javax.swing.JComboBox<>();
-        listaComidasPlan = new javax.swing.JComboBox<>();
         jScrollPane8 = new javax.swing.JScrollPane();
         listaAlimentosEnSistema = new javax.swing.JList();
-        lblDia = new javax.swing.JLabel();
         lblNombrePlan = new javax.swing.JLabel();
         txtNombrePlan = new javax.swing.JTextField();
-        btnAgregarAlPlan = new javax.swing.JButton();
-        btnEliminarDelPlan = new javax.swing.JButton();
+        btnAgregarDesayuno = new javax.swing.JButton();
+        btnEliminarDesayuno = new javax.swing.JButton();
         lblDesayuno = new javax.swing.JLabel();
         lblAlmuerzo = new javax.swing.JLabel();
         lblCena = new javax.swing.JLabel();
-        lblNombreDelDia = new javax.swing.JLabel();
         btnElaborarPlan1 = new javax.swing.JButton();
         jScrollPane10 = new javax.swing.JScrollPane();
         textAlmuerzo = new javax.swing.JTextArea();
@@ -125,10 +124,19 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         textCena = new javax.swing.JTextArea();
         jScrollPane12 = new javax.swing.JScrollPane();
         textDesayuno = new javax.swing.JTextArea();
-        btnEliminarDelPlan1 = new javax.swing.JButton();
-        lblValidarNombrePlan = new javax.swing.JLabel();
-        lblCena1 = new javax.swing.JLabel();
         lblNombrePlanVacio = new javax.swing.JLabel();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
+        jRadioButton3 = new javax.swing.JRadioButton();
+        jRadioButton4 = new javax.swing.JRadioButton();
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jRadioButton6 = new javax.swing.JRadioButton();
+        jRadioButton7 = new javax.swing.JRadioButton();
+        lblValidarNombrePlan = new javax.swing.JLabel();
+        btnAgregarAlmuerzo = new javax.swing.JButton();
+        btnEliminarAlmuerzo = new javax.swing.JButton();
+        btnAgregarCena = new javax.swing.JButton();
+        btnEliminarCena = new javax.swing.JButton();
         panelMostrarPlanEnviado = new javax.swing.JPanel();
         lblOK2 = new javax.swing.JLabel();
         lblOKTexto2 = new javax.swing.JLabel();
@@ -204,7 +212,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1060, 800));
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
-        setUndecorated(true);
         setResizable(false);
         setSize(new java.awt.Dimension(1060, 800));
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -668,55 +675,11 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         panelElaborarPlan.add(lblElaborarNuevoPlan);
         lblElaborarNuevoPlan.setBounds(30, 11, 403, 91);
 
-        lblComida.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
-        lblComida.setForeground(new java.awt.Color(255, 255, 255));
-        lblComida.setText("Comida");
-        panelElaborarPlan.add(lblComida);
-        lblComida.setBounds(50, 230, 134, 52);
-
         lblAlimentos.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
         lblAlimentos.setForeground(new java.awt.Color(255, 255, 255));
         lblAlimentos.setText("Alimentos");
         panelElaborarPlan.add(lblAlimentos);
-        lblAlimentos.setBounds(310, 110, 167, 44);
-
-        listaDiasDeLaSemana.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        listaDiasDeLaSemana.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                listaDiasDeLaSemanaItemStateChanged(evt);
-            }
-        });
-        listaDiasDeLaSemana.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                listaDiasDeLaSemanaFocusLost(evt);
-            }
-        });
-        listaDiasDeLaSemana.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaDiasDeLaSemanaActionPerformed(evt);
-            }
-        });
-        panelElaborarPlan.add(listaDiasDeLaSemana);
-        listaDiasDeLaSemana.setBounds(50, 170, 200, 40);
-
-        listaComidasPlan.setFont(new java.awt.Font("Century Gothic", 0, 20)); // NOI18N
-        listaComidasPlan.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                listaComidasPlanItemStateChanged(evt);
-            }
-        });
-        listaComidasPlan.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                listaComidasPlanFocusLost(evt);
-            }
-        });
-        listaComidasPlan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                listaComidasPlanActionPerformed(evt);
-            }
-        });
-        panelElaborarPlan.add(listaComidasPlan);
-        listaComidasPlan.setBounds(50, 290, 200, 40);
+        lblAlimentos.setBounds(320, 170, 167, 44);
 
         listaAlimentosEnSistema.setBackground(new java.awt.Color(238, 238, 238));
         listaAlimentosEnSistema.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
@@ -728,19 +691,13 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         jScrollPane8.setViewportView(listaAlimentosEnSistema);
 
         panelElaborarPlan.add(jScrollPane8);
-        jScrollPane8.setBounds(310, 160, 285, 166);
-
-        lblDia.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
-        lblDia.setForeground(new java.awt.Color(255, 255, 255));
-        lblDia.setText("Día");
-        panelElaborarPlan.add(lblDia);
-        lblDia.setBounds(50, 120, 134, 36);
+        jScrollPane8.setBounds(320, 220, 285, 166);
 
         lblNombrePlan.setFont(new java.awt.Font("Century Gothic", 1, 25)); // NOI18N
         lblNombrePlan.setForeground(new java.awt.Color(255, 255, 255));
         lblNombrePlan.setText("Nombre del plan:");
         panelElaborarPlan.add(lblNombrePlan);
-        lblNombrePlan.setBounds(30, 370, 240, 34);
+        lblNombrePlan.setBounds(40, 120, 240, 34);
 
         txtNombrePlan.setBackground(new java.awt.Color(227, 227, 227));
         txtNombrePlan.setFont(new java.awt.Font("Century Gothic", 0, 15)); // NOI18N
@@ -757,53 +714,47 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             }
         });
         panelElaborarPlan.add(txtNombrePlan);
-        txtNombrePlan.setBounds(260, 370, 181, 38);
+        txtNombrePlan.setBounds(270, 120, 181, 38);
 
-        btnAgregarAlPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAgregarAlPlan.png"))); // NOI18N
-        btnAgregarAlPlan.setBorderPainted(false);
-        btnAgregarAlPlan.setContentAreaFilled(false);
-        btnAgregarAlPlan.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarDesayuno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAgregarAlPlan.png"))); // NOI18N
+        btnAgregarDesayuno.setBorderPainted(false);
+        btnAgregarDesayuno.setContentAreaFilled(false);
+        btnAgregarDesayuno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarAlPlanActionPerformed(evt);
+                btnAgregarDesayunoActionPerformed(evt);
             }
         });
-        panelElaborarPlan.add(btnAgregarAlPlan);
-        btnAgregarAlPlan.setBounds(620, 150, 90, 80);
+        panelElaborarPlan.add(btnAgregarDesayuno);
+        btnAgregarDesayuno.setBounds(100, 730, 60, 50);
 
-        btnEliminarDelPlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEliminarDelPlan.png"))); // NOI18N
-        btnEliminarDelPlan.setBorderPainted(false);
-        btnEliminarDelPlan.setContentAreaFilled(false);
-        btnEliminarDelPlan.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarDesayuno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEliminarDelPlan.png"))); // NOI18N
+        btnEliminarDesayuno.setBorderPainted(false);
+        btnEliminarDesayuno.setContentAreaFilled(false);
+        btnEliminarDesayuno.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarDelPlanActionPerformed(evt);
+                btnEliminarDesayunoActionPerformed(evt);
             }
         });
-        panelElaborarPlan.add(btnEliminarDelPlan);
-        btnEliminarDelPlan.setBounds(630, 260, 70, 70);
+        panelElaborarPlan.add(btnEliminarDesayuno);
+        btnEliminarDesayuno.setBounds(150, 720, 70, 70);
 
         lblDesayuno.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         lblDesayuno.setForeground(new java.awt.Color(255, 255, 255));
         lblDesayuno.setText("Desayuno");
         panelElaborarPlan.add(lblDesayuno);
-        lblDesayuno.setBounds(170, 460, 120, 34);
+        lblDesayuno.setBounds(70, 440, 120, 34);
 
         lblAlmuerzo.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         lblAlmuerzo.setForeground(new java.awt.Color(255, 255, 255));
         lblAlmuerzo.setText("Almuerzo");
         panelElaborarPlan.add(lblAlmuerzo);
-        lblAlmuerzo.setBounds(370, 460, 120, 34);
+        lblAlmuerzo.setBounds(300, 440, 120, 34);
 
         lblCena.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
         lblCena.setForeground(new java.awt.Color(255, 255, 255));
         lblCena.setText("Cena");
         panelElaborarPlan.add(lblCena);
-        lblCena.setBounds(560, 460, 80, 34);
-
-        lblNombreDelDia.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
-        lblNombreDelDia.setForeground(new java.awt.Color(255, 255, 255));
-        lblNombreDelDia.setText("Nombre del dia");
-        panelElaborarPlan.add(lblNombreDelDia);
-        lblNombreDelDia.setBounds(20, 550, 120, 34);
+        lblCena.setBounds(530, 440, 80, 34);
 
         btnElaborarPlan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEnviarMensaje.png"))); // NOI18N
         btnElaborarPlan1.setBorderPainted(false);
@@ -823,7 +774,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         jScrollPane10.setViewportView(textAlmuerzo);
 
         panelElaborarPlan.add(jScrollPane10);
-        jScrollPane10.setBounds(350, 520, 160, 240);
+        jScrollPane10.setBounds(300, 470, 180, 260);
 
         textCena.setBackground(new java.awt.Color(51, 51, 51));
         textCena.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
@@ -832,7 +783,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         jScrollPane11.setViewportView(textCena);
 
         panelElaborarPlan.add(jScrollPane11);
-        jScrollPane11.setBounds(540, 520, 160, 240);
+        jScrollPane11.setBounds(530, 470, 180, 260);
 
         textDesayuno.setBackground(new java.awt.Color(51, 51, 51));
         textDesayuno.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
@@ -841,35 +792,154 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         jScrollPane12.setViewportView(textDesayuno);
 
         panelElaborarPlan.add(jScrollPane12);
-        jScrollPane12.setBounds(150, 520, 160, 240);
-
-        btnEliminarDelPlan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoGuardarDia.png"))); // NOI18N
-        btnEliminarDelPlan1.setBorderPainted(false);
-        btnEliminarDelPlan1.setContentAreaFilled(false);
-        btnEliminarDelPlan1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarDelPlan1ActionPerformed(evt);
-            }
-        });
-        panelElaborarPlan.add(btnEliminarDelPlan1);
-        btnEliminarDelPlan1.setBounds(580, 390, 70, 70);
-
-        lblValidarNombrePlan.setForeground(new java.awt.Color(255, 255, 255));
-        lblValidarNombrePlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png"))); // NOI18N
-        panelElaborarPlan.add(lblValidarNombrePlan);
-        lblValidarNombrePlan.setBounds(450, 370, 32, 44);
-
-        lblCena1.setFont(new java.awt.Font("Century Gothic", 0, 18)); // NOI18N
-        lblCena1.setForeground(new java.awt.Color(255, 255, 255));
-        lblCena1.setText("Guardar día");
-        panelElaborarPlan.add(lblCena1);
-        lblCena1.setBounds(640, 410, 150, 34);
+        jScrollPane12.setBounds(70, 470, 180, 260);
 
         lblNombrePlanVacio.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         lblNombrePlanVacio.setForeground(new java.awt.Color(240, 128, 128));
         lblNombrePlanVacio.setText("Dato vacío");
         panelElaborarPlan.add(lblNombrePlanVacio);
-        lblNombrePlanVacio.setBounds(490, 370, 134, 38);
+        lblNombrePlanVacio.setBounds(500, 120, 134, 38);
+
+        jRadioButton1.setBackground(new java.awt.Color(51, 51, 51));
+        diaSemana.add(jRadioButton1);
+        jRadioButton1.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton1.setSelected(true);
+        jRadioButton1.setText("Lunes");
+        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton1ActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(jRadioButton1);
+        jRadioButton1.setBounds(50, 190, 200, 23);
+
+        jRadioButton2.setBackground(new java.awt.Color(51, 51, 51));
+        diaSemana.add(jRadioButton2);
+        jRadioButton2.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton2.setText("Martes");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(jRadioButton2);
+        jRadioButton2.setBounds(50, 220, 200, 23);
+
+        jRadioButton3.setBackground(new java.awt.Color(51, 51, 51));
+        diaSemana.add(jRadioButton3);
+        jRadioButton3.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton3.setText("Miercoles");
+        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton3ActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(jRadioButton3);
+        jRadioButton3.setBounds(50, 250, 210, 23);
+
+        jRadioButton4.setBackground(new java.awt.Color(51, 51, 51));
+        diaSemana.add(jRadioButton4);
+        jRadioButton4.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton4.setText("Jueves");
+        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton4ActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(jRadioButton4);
+        jRadioButton4.setBounds(50, 280, 200, 23);
+
+        jRadioButton5.setBackground(new java.awt.Color(51, 51, 51));
+        diaSemana.add(jRadioButton5);
+        jRadioButton5.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jRadioButton5.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton5.setText("Viernes");
+        jRadioButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton5ActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(jRadioButton5);
+        jRadioButton5.setBounds(50, 310, 200, 23);
+
+        jRadioButton6.setBackground(new java.awt.Color(51, 51, 51));
+        diaSemana.add(jRadioButton6);
+        jRadioButton6.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jRadioButton6.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton6.setText("Sabado");
+        jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton6ActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(jRadioButton6);
+        jRadioButton6.setBounds(50, 340, 200, 23);
+
+        jRadioButton7.setBackground(new java.awt.Color(51, 51, 51));
+        diaSemana.add(jRadioButton7);
+        jRadioButton7.setFont(new java.awt.Font("Century Gothic", 1, 20)); // NOI18N
+        jRadioButton7.setForeground(new java.awt.Color(255, 255, 255));
+        jRadioButton7.setText("Domingo");
+        jRadioButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton7ActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(jRadioButton7);
+        jRadioButton7.setBounds(50, 370, 210, 23);
+
+        lblValidarNombrePlan.setForeground(new java.awt.Color(255, 255, 255));
+        lblValidarNombrePlan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoCampoIncorrecto.png"))); // NOI18N
+        panelElaborarPlan.add(lblValidarNombrePlan);
+        lblValidarNombrePlan.setBounds(460, 120, 32, 44);
+
+        btnAgregarAlmuerzo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAgregarAlPlan.png"))); // NOI18N
+        btnAgregarAlmuerzo.setBorderPainted(false);
+        btnAgregarAlmuerzo.setContentAreaFilled(false);
+        btnAgregarAlmuerzo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarAlmuerzoActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(btnAgregarAlmuerzo);
+        btnAgregarAlmuerzo.setBounds(330, 730, 60, 50);
+
+        btnEliminarAlmuerzo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEliminarDelPlan.png"))); // NOI18N
+        btnEliminarAlmuerzo.setBorderPainted(false);
+        btnEliminarAlmuerzo.setContentAreaFilled(false);
+        btnEliminarAlmuerzo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarAlmuerzoActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(btnEliminarAlmuerzo);
+        btnEliminarAlmuerzo.setBounds(380, 720, 70, 70);
+
+        btnAgregarCena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoAgregarAlPlan.png"))); // NOI18N
+        btnAgregarCena.setBorderPainted(false);
+        btnAgregarCena.setContentAreaFilled(false);
+        btnAgregarCena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAgregarCenaActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(btnAgregarCena);
+        btnAgregarCena.setBounds(560, 730, 60, 50);
+
+        btnEliminarCena.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/iconoEliminarDelPlan.png"))); // NOI18N
+        btnEliminarCena.setBorderPainted(false);
+        btnEliminarCena.setContentAreaFilled(false);
+        btnEliminarCena.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarCenaActionPerformed(evt);
+            }
+        });
+        panelElaborarPlan.add(btnEliminarCena);
+        btnEliminarCena.setBounds(610, 720, 70, 70);
 
         panelDerecho.add(panelElaborarPlan, "card2");
 
@@ -923,7 +993,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         panelIzquierdo.setMinimumSize(new java.awt.Dimension(320, 500));
         panelIzquierdo.setPreferredSize(new java.awt.Dimension(320, 500));
 
-        listaPlanesPendientes.setBackground(new java.awt.Color(238, 238, 238));
+        listaPlanesPendientes.setBackground(new java.awt.Color(227, 227, 227));
         listaPlanesPendientes.setFont(new java.awt.Font("Century Gothic", 0, 19)); // NOI18N
         listaPlanesPendientes.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         listaPlanesPendientes.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
@@ -1018,6 +1088,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblTxtRestricciones.setForeground(new java.awt.Color(255, 255, 255));
         lblTxtRestricciones.setText("Restricciones:");
 
+        listaRestricciones.setBackground(new java.awt.Color(227, 227, 227));
         listaRestricciones.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane5.setViewportView(listaRestricciones);
 
@@ -1025,6 +1096,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblPreferencias.setForeground(new java.awt.Color(255, 255, 255));
         lblPreferencias.setText("Preferencias:");
 
+        listaPreferencias.setBackground(new java.awt.Color(227, 227, 227));
         listaPreferencias.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane6.setViewportView(listaPreferencias);
 
@@ -1032,6 +1104,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         lblIngestas.setForeground(new java.awt.Color(255, 255, 255));
         lblIngestas.setText("Ingestas:");
 
+        listaIngestas.setBackground(new java.awt.Color(227, 227, 227));
         listaIngestas.setSelectionBackground(new java.awt.Color(255, 255, 255));
         jScrollPane7.setViewportView(listaIngestas);
 
@@ -1817,7 +1890,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
 
     private void btnIngresarFotoAlimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresarFotoAlimentoActionPerformed
         JFileChooser fileChooser = new JFileChooser();
-        FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png");
+        FileNameExtensionFilter file = new FileNameExtensionFilter("PNG", "png", "JPEG", "jpeg", "JPG", "jpg", "GIF", "gif");
         fileChooser.setFileFilter(file);
         int imagen = fileChooser.showOpenDialog(this);
         if (imagen == JFileChooser.APPROVE_OPTION) {
@@ -1980,6 +2053,8 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
 
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         sistema.guardarDatosSistema();
+        this.dispose();
+
     }//GEN-LAST:event_formWindowClosing
 
     private void lblValidarNombreFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_lblValidarNombreFocusLost
@@ -2020,79 +2095,10 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
 
     private void btnElaborarPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElaborarPlanActionPerformed
         ocultarPaneles();
-        cargarListaDiasDeLaSemana();
-        cargarListaIngestasPorDia();
         this.listaAlimentosEnSistema.setListData(sistema.getListaAlimentos().toArray());
-        this.lblNombreDelDia.setText("Lunes");
         this.panelElaborarPlan.setVisible(true);
         this.listaAlimentosEnSistema.setSelectedIndex(0);
     }//GEN-LAST:event_btnElaborarPlanActionPerformed
-
-    private void listaDiasDeLaSemanaItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaDiasDeLaSemanaItemStateChanged
-
-        String diaSeleccionado = (String) this.listaDiasDeLaSemana.getSelectedItem();
-        this.diaDeLaSemanaActual = diaSeleccionado;
-        this.lblNombreDelDia.setText(this.diaDeLaSemanaActual);
-        switch (this.diaDeLaSemanaActual) {
-            case "Lunes":
-                this.textDesayuno.setText(this.planAlimentacion[0][0]);
-                this.textCena.setText(this.planAlimentacion[0][2]);
-                this.textAlmuerzo.setText(this.planAlimentacion[0][1]);
-                break;
-            case "Martes":
-                this.textDesayuno.setText(this.planAlimentacion[1][0]);
-                this.textCena.setText(this.planAlimentacion[1][2]);
-                this.textAlmuerzo.setText(this.planAlimentacion[1][1]);
-                break;
-            case "Miercoles":
-                this.textDesayuno.setText(this.planAlimentacion[2][0]);
-                this.textCena.setText(this.planAlimentacion[2][2]);
-                this.textAlmuerzo.setText(this.planAlimentacion[2][1]);
-                break;
-            case "Jueves":
-                this.textDesayuno.setText(this.planAlimentacion[3][0]);
-                this.textCena.setText(this.planAlimentacion[3][2]);
-                this.textAlmuerzo.setText(this.planAlimentacion[3][1]);
-                break;
-            case "Viernes":
-                this.textDesayuno.setText(this.planAlimentacion[4][0]);
-                this.textCena.setText(this.planAlimentacion[4][2]);
-                this.textAlmuerzo.setText(this.planAlimentacion[4][1]);
-                break;
-            case "Sabado":
-                this.textDesayuno.setText(this.planAlimentacion[5][0]);
-                this.textCena.setText(this.planAlimentacion[5][2]);
-                this.textAlmuerzo.setText(this.planAlimentacion[5][1]);
-                break;
-            case "Domingo":
-                this.textDesayuno.setText(this.planAlimentacion[6][0]);
-                this.textCena.setText(this.planAlimentacion[6][2]);
-                this.textAlmuerzo.setText(this.planAlimentacion[6][1]);
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_listaDiasDeLaSemanaItemStateChanged
-
-    private void listaDiasDeLaSemanaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listaDiasDeLaSemanaFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listaDiasDeLaSemanaFocusLost
-
-    private void listaDiasDeLaSemanaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaDiasDeLaSemanaActionPerformed
-
-    }//GEN-LAST:event_listaDiasDeLaSemanaActionPerformed
-
-    private void listaComidasPlanItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_listaComidasPlanItemStateChanged
-
-    }//GEN-LAST:event_listaComidasPlanItemStateChanged
-
-    private void listaComidasPlanFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_listaComidasPlanFocusLost
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listaComidasPlanFocusLost
-
-    private void listaComidasPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listaComidasPlanActionPerformed
-
-    }//GEN-LAST:event_listaComidasPlanActionPerformed
 
     private void listaAlimentosEnSistemaValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_listaAlimentosEnSistemaValueChanged
         // TODO add your handling code here:
@@ -2115,81 +2121,20 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNombrePlanActionPerformed
 
-    private void btnAgregarAlPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAlPlanActionPerformed
-        String diaSeleccionado = (String) this.listaDiasDeLaSemana.getSelectedItem();
-        this.diaDeLaSemanaAnterior = diaSeleccionado;
-        String ingestaSeleccionada = (String) this.listaComidasPlan.getSelectedItem();
+    private void btnAgregarDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarDesayunoActionPerformed
         String alimentoAgregado = this.listaAlimentosEnSistema.getSelectedValue().toString();
-        String textoAnterior = "";
-        switch (ingestaSeleccionada) {
-            case "Desayuno":
-                textoAnterior = this.textDesayuno.getText();
-                if (textoAnterior.equals("")) {
-                    textoAnterior = alimentoAgregado;
-                } else {
-                    textoAnterior += "\n" + alimentoAgregado;
-                }
-                this.textDesayuno.setText(textoAnterior);
-                break;
-            case "Almuerzo":
-                textoAnterior = this.textAlmuerzo.getText();
-                if (textoAnterior.equals("")) {
-                    textoAnterior = alimentoAgregado;
-                } else {
-                    textoAnterior += "\n" + alimentoAgregado;
-                }
-                this.textAlmuerzo.setText(textoAnterior);
-                break;
-            case "Cena":
-                textoAnterior = this.textCena.getText();
-                if (textoAnterior.equals("")) {
-                    textoAnterior = alimentoAgregado;
-                } else {
-                    textoAnterior += "\n" + alimentoAgregado;
-                }
-                this.textCena.setText(textoAnterior);
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_btnAgregarAlPlanActionPerformed
+        planAlimentacion[diaSeleccionado][0] += alimentoAgregado + "\n";
+        actualizarTextosComidas();
 
-    private void btnEliminarDelPlanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDelPlanActionPerformed
-        String diaSeleccionado = (String) this.listaDiasDeLaSemana.getSelectedItem();
-        String ingestaSeleccionada = (String) this.listaComidasPlan.getSelectedItem();
+    }//GEN-LAST:event_btnAgregarDesayunoActionPerformed
+
+    private void btnEliminarDesayunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDesayunoActionPerformed
+
         String alimentoEliminado = this.listaAlimentosEnSistema.getSelectedValue().toString();
-        String aRemplazar = "";
-        String remplazado = "";
-        CharSequence secuencia = "\n";
-        switch (ingestaSeleccionada) {
-            case "Desayuno":
-                aRemplazar = this.textDesayuno.getText();
-                if (aRemplazar.contains(secuencia)) {
-                    alimentoEliminado += "\n";
-                }
-                remplazado = aRemplazar.replaceFirst(alimentoEliminado, "");
-                this.textDesayuno.setText(remplazado);
-                break;
-            case "Almuerzo":
-                aRemplazar = this.textAlmuerzo.getText();
-                if (aRemplazar.contains(secuencia)) {
-                    alimentoEliminado += "\n";
-                }
-                remplazado = aRemplazar.replaceFirst(alimentoEliminado, "");
-                this.textAlmuerzo.setText(remplazado);
-                break;
-            case "Cena":
-                aRemplazar = this.textCena.getText();
-                if (aRemplazar.contains(secuencia)) {
-                    alimentoEliminado += "\n";
-                }
-                remplazado = aRemplazar.replaceFirst(alimentoEliminado, "");
-                this.textCena.setText(remplazado);
-                break;
-            default:
-                break;
-        }
-    }//GEN-LAST:event_btnEliminarDelPlanActionPerformed
+        alimentoEliminado += "\n";
+        planAlimentacion[this.diaSeleccionado][0] = planAlimentacion[this.diaSeleccionado][0].replaceFirst(alimentoEliminado, "");
+        actualizarTextosComidas();
+    }//GEN-LAST:event_btnEliminarDesayunoActionPerformed
 
     private void btnElaborarPlan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnElaborarPlan1ActionPerformed
         String nombreDelPlan = this.txtNombrePlan.getText();
@@ -2207,10 +2152,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
             }
         }
     }//GEN-LAST:event_btnElaborarPlan1ActionPerformed
-
-    private void btnEliminarDelPlan1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarDelPlan1ActionPerformed
-        guardarDatosDelPlan();
-    }//GEN-LAST:event_btnEliminarDelPlan1ActionPerformed
 
     private void txtHidratosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHidratosKeyTyped
         char ingresado = evt.getKeyChar();
@@ -2288,6 +2229,80 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         AyudaProfesional ayuda = new AyudaProfesional(sistema);
         ayuda.setVisible(true);
     }//GEN-LAST:event_btnAyudaActionPerformed
+
+    private void actualizarTextosComidas() {
+        textDesayuno.setText(this.planAlimentacion[diaSeleccionado][0]);
+        textAlmuerzo.setText(this.planAlimentacion[diaSeleccionado][1]);
+        textCena.setText(this.planAlimentacion[diaSeleccionado][2]);
+    }
+
+    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
+        diaSeleccionado = 3;
+        actualizarTextosComidas();
+
+
+    }//GEN-LAST:event_jRadioButton4ActionPerformed
+
+    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
+        diaSeleccionado = 2;
+        actualizarTextosComidas();
+
+    }//GEN-LAST:event_jRadioButton3ActionPerformed
+
+    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+        diaSeleccionado = 0;
+        actualizarTextosComidas();
+
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        diaSeleccionado = 1;
+        actualizarTextosComidas();
+
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
+
+    private void jRadioButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton5ActionPerformed
+        diaSeleccionado = 4;
+        actualizarTextosComidas();
+
+    }//GEN-LAST:event_jRadioButton5ActionPerformed
+
+    private void jRadioButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton6ActionPerformed
+        diaSeleccionado = 5;
+        actualizarTextosComidas();
+
+    }//GEN-LAST:event_jRadioButton6ActionPerformed
+
+    private void btnAgregarAlmuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarAlmuerzoActionPerformed
+        String alimentoAgregado = this.listaAlimentosEnSistema.getSelectedValue().toString();
+        planAlimentacion[diaSeleccionado][1] += alimentoAgregado + "\n";
+        actualizarTextosComidas();
+    }//GEN-LAST:event_btnAgregarAlmuerzoActionPerformed
+
+    private void btnEliminarAlmuerzoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarAlmuerzoActionPerformed
+        String alimentoEliminado = this.listaAlimentosEnSistema.getSelectedValue().toString();
+        alimentoEliminado += "\n";
+        planAlimentacion[this.diaSeleccionado][1] = planAlimentacion[this.diaSeleccionado][1].replaceFirst(alimentoEliminado, "");
+        actualizarTextosComidas();
+    }//GEN-LAST:event_btnEliminarAlmuerzoActionPerformed
+
+    private void btnAgregarCenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarCenaActionPerformed
+        String alimentoAgregado = this.listaAlimentosEnSistema.getSelectedValue().toString();
+        planAlimentacion[diaSeleccionado][2] += alimentoAgregado + "\n";
+        actualizarTextosComidas();
+    }//GEN-LAST:event_btnAgregarCenaActionPerformed
+
+    private void btnEliminarCenaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarCenaActionPerformed
+        String alimentoEliminado = this.listaAlimentosEnSistema.getSelectedValue().toString();
+        alimentoEliminado += "\n";
+        planAlimentacion[this.diaSeleccionado][2] = planAlimentacion[this.diaSeleccionado][2].replaceFirst(alimentoEliminado, "");
+        actualizarTextosComidas();
+    }//GEN-LAST:event_btnEliminarCenaActionPerformed
+
+    private void jRadioButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton7ActionPerformed
+        diaSeleccionado = 6;
+        actualizarTextosComidas();
+    }//GEN-LAST:event_jRadioButton7ActionPerformed
 
     private void ocultarPaneles() {
         this.btnConsultasPendientes.setEnabled(true);
@@ -2414,13 +2429,16 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
         return listaRetorno;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarAlPlan;
+    private javax.swing.JButton btnAgregarAlmuerzo;
+    private javax.swing.JButton btnAgregarCena;
+    private javax.swing.JButton btnAgregarDesayuno;
     private javax.swing.JButton btnAyuda;
     private javax.swing.JButton btnConsultasPendientes;
     private javax.swing.JButton btnElaborarPlan;
     private javax.swing.JButton btnElaborarPlan1;
-    private javax.swing.JButton btnEliminarDelPlan;
-    private javax.swing.JButton btnEliminarDelPlan1;
+    private javax.swing.JButton btnEliminarAlmuerzo;
+    private javax.swing.JButton btnEliminarCena;
+    private javax.swing.JButton btnEliminarDesayuno;
     private javax.swing.JButton btnEnviarMensaje;
     private javax.swing.JButton btnHome;
     private javax.swing.JButton btnIngresarAlimento;
@@ -2435,10 +2453,18 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     private javax.swing.JCheckBox checkMinerales;
     private javax.swing.JCheckBox checkProteínas;
     private javax.swing.JCheckBox checkVitaminas;
+    private javax.swing.ButtonGroup diaSemana;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
+    private javax.swing.JRadioButton jRadioButton3;
+    private javax.swing.JRadioButton jRadioButton4;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton jRadioButton6;
+    private javax.swing.JRadioButton jRadioButton7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
@@ -2453,13 +2479,10 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     private javax.swing.JLabel lblAlimentos;
     private javax.swing.JLabel lblAlmuerzo;
     private javax.swing.JLabel lblCena;
-    private javax.swing.JLabel lblCena1;
-    private javax.swing.JLabel lblComida;
     private javax.swing.JLabel lblConsultasPendientes;
     private javax.swing.JLabel lblDatosIncorrectos;
     private javax.swing.JLabel lblDatosIncorrectos2;
     private javax.swing.JLabel lblDesayuno;
-    private javax.swing.JLabel lblDia;
     private javax.swing.JLabel lblElaborarNuevoPlan;
     private javax.swing.JLabel lblElaborarPlan;
     private javax.swing.JLabel lblElijaUnUsuario;
@@ -2486,7 +2509,6 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     private javax.swing.JLabel lblNohayPlanesTexto1;
     private javax.swing.JLabel lblNohayPlanesTexto2;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JLabel lblNombreDelDia;
     private javax.swing.JLabel lblNombrePlan;
     private javax.swing.JLabel lblNombrePlanVacio;
     private javax.swing.JLabel lblNombreUsuario;
@@ -2513,9 +2535,7 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     private javax.swing.JLabel lblVerPerfilUsuario;
     private javax.swing.JLabel lblVitaminas;
     private javax.swing.JList listaAlimentosEnSistema;
-    private javax.swing.JComboBox<String> listaComidasPlan;
     private javax.swing.JList<String> listaConversaciones;
-    private javax.swing.JComboBox<String> listaDiasDeLaSemana;
     private javax.swing.JList<String> listaIngestas;
     private javax.swing.JList<String> listaPlanesPendientes;
     private javax.swing.JList<String> listaPreferencias;
@@ -2555,73 +2575,54 @@ public final class VentanaMenuPrincipalProfesional extends javax.swing.JDialog {
     private javax.swing.JTextField txtVitaminas;
     // End of variables declaration//GEN-END:variables
 
-    private void cargarListaDiasDeLaSemana() {
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        ArrayList<String> diasEnSistema = sistema.devolverListaDiasDeLaSemana();
-        this.listaDiasDeLaSemana.setModel(modelo);
-        for (int i = 0; i < diasEnSistema.size(); i++) {
-            this.listaDiasDeLaSemana.addItem(diasEnSistema.get(i));
-        }
-    }
-
-    private void cargarListaIngestasPorDia() {
-        DefaultComboBoxModel modelo = new DefaultComboBoxModel();
-        ArrayList<String> ingestasEnSistema = sistema.devolverListaIngestasDeLaSemana();
-        this.listaComidasPlan.setModel(modelo);
-        for (int i = 0; i < ingestasEnSistema.size(); i++) {
-            this.listaComidasPlan.addItem(ingestasEnSistema.get(i));
-        }
-    }
-
     private void guardarDatosDelPlan() {
-        String diaSeleccionado = (String) this.listaDiasDeLaSemana.getSelectedItem();
-        this.diaDeLaSemanaActual = diaSeleccionado;
-        this.lblNombreDelDia.setText(diaSeleccionado);
-        String itemsDesayuno = this.textDesayuno.getText();
-        String itemsAlmuerzo = this.textAlmuerzo.getText();
-        String itemsCena = this.textCena.getText();
-        this.textDesayuno.setText("");
-        this.textAlmuerzo.setText("");
-        this.textCena.setText("");
-        switch (this.diaDeLaSemanaAnterior) {
-            case "Lunes":
-                this.planAlimentacion[0][0] = itemsDesayuno;
-                this.planAlimentacion[0][1] = itemsAlmuerzo;
-                this.planAlimentacion[0][2] = itemsCena;
-                break;
-            case "Martes":
-                this.planAlimentacion[1][0] = itemsDesayuno;
-                this.planAlimentacion[1][1] = itemsAlmuerzo;
-                this.planAlimentacion[1][2] = itemsCena;
-                break;
-            case "Miercoles":
-                this.planAlimentacion[2][0] = itemsDesayuno;
-                this.planAlimentacion[2][1] = itemsAlmuerzo;
-                this.planAlimentacion[2][2] = itemsCena;
-                break;
-            case "Jueves":
-                this.planAlimentacion[3][0] = itemsDesayuno;
-                this.planAlimentacion[3][1] = itemsAlmuerzo;
-                this.planAlimentacion[3][2] = itemsCena;
-                break;
-            case "Viernes":
-                this.planAlimentacion[4][0] = itemsDesayuno;
-                this.planAlimentacion[4][1] = itemsAlmuerzo;
-                this.planAlimentacion[4][2] = itemsCena;
-                break;
-            case "Sabado":
-                this.planAlimentacion[5][0] = itemsDesayuno;
-                this.planAlimentacion[5][1] = itemsAlmuerzo;
-                this.planAlimentacion[5][2] = itemsCena;
-                break;
-            case "Domingo":
-                this.planAlimentacion[6][0] = itemsDesayuno;
-                this.planAlimentacion[6][1] = itemsAlmuerzo;
-                this.planAlimentacion[6][2] = itemsCena;
-                break;
-            default:
-                break;
-        }
+//        String diaSeleccionado = diaSemana.getSelection().toString();
+//        String diaDeLaSemanaActual = "xd";
+//        String itemsDesayuno = this.textDesayuno.getText();
+//        String itemsAlmuerzo = this.textAlmuerzo.getText();
+//        String itemsCena = this.textCena.getText();
+//        this.textDesayuno.setText("");
+//        this.textAlmuerzo.setText("");
+//        this.textCena.setText("");
+//        switch (diaDeLaSemanaAnterior) {
+//            case "Lunes":
+//                this.planAlimentacion[0][0] = itemsDesayuno;
+//                this.planAlimentacion[0][1] = itemsAlmuerzo;
+//                this.planAlimentacion[0][2] = itemsCena;
+//                break;
+//            case "Martes":
+//                this.planAlimentacion[1][0] = itemsDesayuno;
+//                this.planAlimentacion[1][1] = itemsAlmuerzo;
+//                this.planAlimentacion[1][2] = itemsCena;
+//                break;
+//            case "Miercoles":
+//                this.planAlimentacion[2][0] = itemsDesayuno;
+//                this.planAlimentacion[2][1] = itemsAlmuerzo;
+//                this.planAlimentacion[2][2] = itemsCena;
+//                break;
+//            case "Jueves":
+//                this.planAlimentacion[3][0] = itemsDesayuno;
+//                this.planAlimentacion[3][1] = itemsAlmuerzo;
+//                this.planAlimentacion[3][2] = itemsCena;
+//                break;
+//            case "Viernes":
+//                this.planAlimentacion[4][0] = itemsDesayuno;
+//                this.planAlimentacion[4][1] = itemsAlmuerzo;
+//                this.planAlimentacion[4][2] = itemsCena;
+//                break;
+//            case "Sabado":
+//                this.planAlimentacion[5][0] = itemsDesayuno;
+//                this.planAlimentacion[5][1] = itemsAlmuerzo;
+//                this.planAlimentacion[5][2] = itemsCena;
+//                break;
+//            case "Domingo":
+//                this.planAlimentacion[6][0] = itemsDesayuno;
+//                this.planAlimentacion[6][1] = itemsAlmuerzo;
+//                this.planAlimentacion[6][2] = itemsCena;
+//                break;
+//            default:
+//                break;
+//        }
     }
 
     private void mostrarErrores(String nombre, String tipoAlimento) {

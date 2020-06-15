@@ -1,8 +1,6 @@
 package dominio;
 
 import java.io.Serializable;
-import java.util.Objects;
-import java.util.Currency;
 
 public final class PlanAlimentacion implements Serializable {
 
@@ -30,8 +28,11 @@ public final class PlanAlimentacion implements Serializable {
     }
 
     public void setUsuario(Usuario unUsuario) {
-        usuario = unUsuario;
-        
+        if (unUsuario == null) {
+            this.usuario = new Usuario(null, null, null, null, null, null, null, null);
+        } else {
+            this.usuario = unUsuario;
+        }
     }
 
     public Profesional getProfesional() {
@@ -67,8 +68,11 @@ public final class PlanAlimentacion implements Serializable {
     }
 
     public void setNombreDelPlan(String unNombreDelPlan) {
-        nombreDelPlan = unNombreDelPlan;
-       
+        if (unNombreDelPlan == null || unNombreDelPlan.isEmpty()) {
+            this.nombreDelPlan = "Plan de alimentación";
+        } else {
+            this.nombreDelPlan = unNombreDelPlan;
+        }
     }
 
     @Override
@@ -78,10 +82,14 @@ public final class PlanAlimentacion implements Serializable {
 
     @Override
     public boolean equals(Object obj) {
-        PlanAlimentacion otroPlanAlimentacion = (PlanAlimentacion) obj;
-        return (this.getNombreDelPlan().equals(otroPlanAlimentacion.getNombreDelPlan())
-                && this.getUsuario().equals(otroPlanAlimentacion.getUsuario())
-                && this.getProfesional().equals(otroPlanAlimentacion.getProfesional()));
+        try {
+            PlanAlimentacion otroPlanAlimentacion = (PlanAlimentacion) obj;
+            return (this.getNombreDelPlan().equals(otroPlanAlimentacion.getNombreDelPlan())
+                    && this.getUsuario().equals(otroPlanAlimentacion.getUsuario())
+                    && this.getProfesional().equals(otroPlanAlimentacion.getProfesional()));
+        } catch (NullPointerException e) {
+            return false;
+        }
     }
 
 }
